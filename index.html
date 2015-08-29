@@ -278,13 +278,23 @@
 </tr>
 <tr>
 <td>filter</td>
-<td>none</td>
-<td>A filter to apply to the question list. Possible values: <code class="prettyprint">starred</code>, <code class="prettyprint">closed</code></td>
+<td>active</td>
+<td>A filter to apply to the question list. Possible values: <code class="prettyprint">starred</code>, <code class="prettyprint">closed</code>, <code class="prettyprint">all</code>. By default, only active questions are returned. To include all questions, you should pass <code class="prettyprint">all</code> for this value.</td>
 </tr>
 <tr>
 <td>sort</td>
 <td>published_at</td>
 <td>Sort order for the questions. Possible values: <code class="prettyprint">published_at</code>, <code class="prettyprint">ends_at</code></td>
+</tr>
+<tr>
+<td>created_before</td>
+<td>none</td>
+<td>Returns only questions created before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
+</tr>
+<tr>
+<td>created_after</td>
+<td>none</td>
+<td>Returns only questions created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
 </tr>
 </tbody></table>
 
