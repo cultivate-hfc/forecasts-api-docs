@@ -354,6 +354,131 @@
 </tr>
 </tbody></table>
 
+<h2 id="prediction-set-creation">Prediction Set Creation</h2>
+
+<p>All predictions are part of a prediction set. In the case of a prediction market, the prediction set will have a single prediction (aka. a trade), while an opinion pool question will have multiple predictions as part of a single prediction set (one for each answer in the question).</p>
+
+<p>This endpoint can be used to submit new prediction sets. All prediction sets require a question id as part of the URL and must include parameters for the prediction set. See below for a list of required parameters. All parameters must be nested under a &ldquo;prediction_set&rdquo; key (see example request body below).</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://yoursite.cultivateforecasts.com/api/v1/questions/1/prediction_sets"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">prediction_set</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">rationale</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">I think this is a great forecast</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">predictions_attributes</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">spend</span><span class="se">\"</span><span class="s2">:-595.9105910591059,</span><span class="se">\"</span><span class="s2">forecasted_probability</span><span class="se">\"</span><span class="s2">:0.2,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:78}]}}"</span>
+</code></pre>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+
+<p>The response contains the newly created prediction set and associated prediction(s).</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"membership_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"superman7"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"question_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lmsr_exclusive_market-8"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-22T21:27:24.419Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-22T21:27:24.419Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"rationale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my rationale"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"comment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"predictions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::PM::LMSR::Trade"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">78</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"answer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer-name-78"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"filled_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-22T21:27:24.428Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"refunded_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-22T21:27:24.428Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-22T21:27:24.428Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"confidence_level"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"made_after_correctness_known"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mf">-595.91</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mf">-8.6919</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starting_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"final_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"starting_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"final_price"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2959</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://yoursite.cultivateforecasts.com/api/v1/question/:question_id/prediction_sets</code></p>
+
+<blockquote>
+<p>Request body example:
+<code class="prettyprint">json
+{
+  &quot;prediction_set&quot;: {
+    &quot;rationale&quot;: &quot;This is my rationale&quot;,
+    &quot;predictions_attributes&quot;: [
+      {
+        &quot;spend&quot;: -595.91,
+        &quot;forecasted_probability&quot;: 0.2,
+        &quot;answer_id&quot;: 78
+      }
+    ]
+  }
+}
+</code></p>
+</blockquote>
+
+<h3 id="prediction-set-parameters">Prediction Set Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>rationale</td>
+<td>Configurable per site</td>
+<td>Contains the rationale/explanation/comment for why the user is making this forecast.</td>
+</tr>
+<tr>
+<td>predictions_attributes</td>
+<td>Yes</td>
+<td>An array of prediction objects that are part of this prediction set. Valid parameters for a prediction are listed below.</td>
+</tr>
+</tbody></table>
+
+<h3 id="prediction-parameters">Prediction Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>answer_id</td>
+<td>Yes</td>
+<td>The answer id on which the user is forecasting.</td>
+</tr>
+<tr>
+<td>forecasted_probability</td>
+<td>Yes</td>
+<td>The probability assigned to this answer by the user. Should be a float between 0 and 1.</td>
+</tr>
+<tr>
+<td>spend</td>
+<td>Only if the question is a prediction market</td>
+<td>The amount of clinkles to buy/sell as part of this prediction/trade. A positive value indicates a buy, while a negative value indicates a sell/short.</td>
+</tr>
+</tbody></table>
+
           <h1 id="questions">Questions</h1>
 
 <h2 id="questions-list">Questions List</h2>
@@ -580,6 +705,8 @@
           <h1 id="stars">Stars</h1>
 
 <h2 id="stars-list">Stars List</h2>
+
+<p>If the user issuing a request to this endpoint is not an administrator, then a membership_id is required.</p>
 
 <blockquote>
 <p>Request:</p>
