@@ -415,22 +415,21 @@
 <p><code class="prettyprint">POST https://yoursite.cultivateforecasts.com/api/v1/question/:question_id/prediction_sets</code></p>
 
 <blockquote>
-<p>Request body example:
-<code class="prettyprint">json
-{
-  &quot;prediction_set&quot;: {
-    &quot;rationale&quot;: &quot;This is my rationale&quot;,
-    &quot;predictions_attributes&quot;: [
-      {
-        &quot;spend&quot;: -595.91,
-        &quot;forecasted_probability&quot;: 0.2,
-        &quot;answer_id&quot;: 78
-      }
-    ]
-  }
-}
-</code></p>
+<p>Request body example:</p>
 </blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"prediction_set"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"rationale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my rationale"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"predictions_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"spend"</span><span class="p">:</span><span class="w"> </span><span class="mf">-595.91</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"forecasted_probability"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">78</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 
 <h3 id="prediction-set-parameters">Prediction Set Parameters</h3>
 
