@@ -96,6 +96,154 @@
 
 <p>For subsequent requests, you must include your token as part of an authorization header.</p>
 
+          <h1 id="badges">Badges</h1>
+
+<h2 id="badges-list">Badges List</h2>
+
+<p>Shows a list of badges that exist on the site.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://yoursite.cultivateforecasts.com/api/v1/badges"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
+</code></pre>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"badges"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"site_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Badge name"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A description of the badge"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/social/badge/image/1/01.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-18T17:20:51.886Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T14:39:14.977Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"site_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"badge2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"another bdage"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/social/badge/image/2/badge-image.JPG"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-18T17:21:11.025Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-18T17:21:11.025Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"site_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A third badge"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Third badge description"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/uploads/social/badge/image/3/badge3.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-18T19:39:43.768Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-18T19:39:43.768Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://yoursite.cultivateforecasts.com/api/v1/badges</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<p>None.</p>
+
+          <h1 id="earned-badges">Earned Badges</h1>
+
+<h2 id="earned-badge-creation">Earned Badge Creation</h2>
+
+<p>Creating an &ldquo;earned badge&rdquo; model is equivalent to awarding a badge to a given user.</p>
+
+<p>Only administrators can access this API.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://yoursite.cultivateforecasts.com/api/v1/earned_badges"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">earned_badge</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">badge_id</span><span class="se">\"</span><span class="s2">:5,</span><span class="se">\"</span><span class="s2">membership_id</span><span class="se">\"</span><span class="s2">:23}}"</span>
+</code></pre>
+
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"earned_badge"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"badge_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+
+<p>The response contains the newly created earned badge.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"badge_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T15:09:56.538Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T15:09:56.538Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"featured"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://yoursite.cultivateforecasts.com/api/v1/earned_badges</code></p>
+
+<h3 id="earned-badge-parameters">Earned Badge Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>badge_id</td>
+<td>Yes</td>
+<td>Contains the ID of the badge to award to the membership.</td>
+</tr>
+<tr>
+<td>membership_id</td>
+<td>Yes</td>
+<td>Contains the ID of the membership who should be awarded the badge.</td>
+</tr>
+</tbody></table>
+
+<h2 id="earned-badge-deletion">Earned Badge Deletion</h2>
+
+<p>Deleting an &ldquo;earned badge&rdquo; model is equivalent to removing a badge from a given user.</p>
+
+<p>Only administrators can access this API.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"DELETE"</span> <span class="s2">"https://yoursite.cultivateforecasts.com/api/v1/earned_badges/32"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span>
+</code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE https://yoursite.cultivateforecasts.com/api/v1/earned_badges/:id</code></p>
+
+<h3 id="earned-badge-parameters">Earned Badge Parameters</h3>
+
+<p>None</p>
+
           <h1 id="memberships">Memberships</h1>
 
 <h2 id="memberships-list">Memberships List</h2>
