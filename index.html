@@ -96,6 +96,99 @@
 
 <p>For subsequent requests, you must include your token as part of an authorization header.</p>
 
+          <h1 id="external-predictions">External Predictions</h1>
+
+<h2 id="external-predictions-creation">External Predictions Creation</h2>
+
+<p>This API is for submitting forecasts generated outside of Cultivate Forecasts, which will then be scored when the question/answer resolves.</p>
+
+<p>Only administrators can access this API.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://yoursite.cultivateforecasts.com/api/v1/external_predictions"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">external_prediction</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.65724314,</span><span class="se">\"</span><span class="s2">external_predictor_attributes</span><span class="se">\"</span><span class="s2">: {</span><span class="se">\"</span><span class="s2">method_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">red</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">forecast_at</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">2016-10-10T14:15:19-05:00</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">question_id</span><span class="se">\"</span><span class="s2">:5,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:15}}"</span>
+</code></pre>
+
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"external_prediction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.65724314</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"external_predictor_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"forecast_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T12:00:00Z"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+
+<p>The response contains the newly created prediction.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"site_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">153</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">242</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T12:00:01.299Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T12:00:01.299Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.65724314</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"forecast_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T12:00:00Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://yoursite.cultivateforecasts.com/api/v1/external_predictions</code></p>
+
+<h3 id="external-predictions-parameters">External Predictions Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>value</td>
+<td>Yes</td>
+<td>Contains the value of the forecast. Must be a number between 1 and 0.</td>
+</tr>
+<tr>
+<td>question_id</td>
+<td>Yes</td>
+<td>The question id associated with this forecast</td>
+</tr>
+<tr>
+<td>answer_id</td>
+<td>Yes</td>
+<td>The answer id associated with this forecast</td>
+</tr>
+<tr>
+<td>external_predictor_attributes[method_name]</td>
+<td>Yes</td>
+<td>A string identifying the method you&rsquo;re using to generate this forecast. Can be any string.</td>
+</tr>
+<tr>
+<td>forecast_at</td>
+<td>Yes</td>
+<td>The timestamp as of when this forecast is valid. Must be in iso8601 format.</td>
+</tr>
+</tbody></table>
+
           <h1 id="badges">Badges</h1>
 
 <h2 id="badges-list">Badges List</h2>
@@ -152,6 +245,62 @@
 <h3 id="query-parameters">Query Parameters</h3>
 
 <p>None.</p>
+
+          <h1 id="clarifications">Clarifications</h1>
+
+<h2 id="clarifications-list">Clarifications List</h2>
+
+<p>This API returns a list of question clarifications. These are used to officially clarify questions about a question and its resolution criteria.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://yoursite.cultivateforecasts.com/api/v1/clarifications"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
+</code></pre>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"clarifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clarification-content-2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-20T22:22:52.724Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-27T22:22:52.734Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clarification-content-3"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-26T22:22:52.736Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-27T22:22:52.744Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://yoursite.cultivateforecasts.com/api/v1/clarifications</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>0</td>
+<td>Pagination page number</td>
+</tr>
+</tbody></table>
 
           <h1 id="earned-badges">Earned Badges</h1>
 
@@ -702,6 +851,133 @@
 <td>spend</td>
 <td>Only if the question is a prediction market</td>
 <td>The amount of clinkles to buy/sell as part of this prediction/trade. A positive value indicates a buy, while a negative value indicates a sell/short.</td>
+</tr>
+</tbody></table>
+
+          <h1 id="positions">Positions</h1>
+
+<h2 id="positions-list">Positions List</h2>
+
+<p>This API returns a list of a user&rsquo;s positions. This API is only accessible for the positions owned by the user who owns the oauth token that is included.</p>
+
+<p>Each position record contains information about the most recent forecast made by the user in a given answer. It also includes information about any accumulated shares in prediction market-type questions.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell"><code>curl <span class="s2">"https://yoursite.cultivateforecasts.com/api/v1/positions"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
+</code></pre>
+
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"positions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"answer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer-name-4"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">248</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T20:07:30.360Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">245</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"question_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"question-name-2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">198</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"resolved_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::PM::Position"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_prediction_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-10T20:07:30.347Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T20:07:30.360Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"answer_current_consensus"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"consensus_at_time_of_last_prediction"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gain_loss_cache"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latest_prediction_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"liquidation_value_cache"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"long_investment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"long_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_investment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"net_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"answer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer-name-6"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">250</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T20:07:30.365Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">245</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"question_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"question-name-2"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">198</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"resolved_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::PM::Position"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_prediction_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-03T20:07:30.363Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T20:07:30.365Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"answer_current_consensus"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"consensus_at_time_of_last_prediction"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gain_loss_cache"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latest_prediction_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"liquidation_value_cache"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"long_investment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"long_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_investment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"net_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"answer_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer-name-1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">245</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T20:07:30.137Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">245</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"question_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"question-name-1"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">197</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"resolved_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"last_prediction_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-17T20:07:30.116Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T20:07:30.137Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"answer_current_consensus"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.333333333</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"consensus_at_time_of_last_prediction"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gain_loss_cache"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"latest_prediction_probability"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"liquidation_value_cache"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"long_investment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"long_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_investment"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://yoursite.cultivateforecasts.com/api/v1/positions</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>0</td>
+<td>Pagination page number</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>none</td>
+<td>The order in which to sort the positions. Valid values include <code class="prettyprint">question_name</code> <code class="prettyprint">answer_name</code>, <code class="prettyprint">answer_current_price</code>, <code class="prettyprint">quantity</code>, <code class="prettyprint">total_investment</code>, <code class="prettyprint">gain_loss</code>, <code class="prettyprint">liquidation_value</code>, <code class="prettyprint">answer_last_prediction</code>. By default, positions are sorted with most recently updated forecasts first.</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>&ldquo;desc&rdquo;</td>
+<td>The sort direction to apply to the sort filter. Valid values include <code class="prettyprint">asc</code> and <code class="prettyprint">desc</code></td>
+</tr>
+<tr>
+<td>filter</td>
+<td>none</td>
+<td>A filter to apply to the positions list. Valid values include <code class="prettyprint">closed</code> (positions in closed/ended questions) and <code class="prettyprint">resolved</code> (positions in resolved questions). If no filter is passed, only positions in active answers will be included.</td>
 </tr>
 </tbody></table>
 
