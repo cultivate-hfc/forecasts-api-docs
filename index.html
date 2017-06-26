@@ -322,6 +322,14 @@
 
 <p>For subsequent requests, you must include your token as part of an authorization header.</p>
 
+          <h1 id="push-apis">Push APIs</h1>
+
+<p>Cultivate Forecasts provides push-based APIs for <a href="#questions">question</a> creation, update, resolution, and <a href="#clarifications">clarification</a>.</p>
+
+<p>For each of these APIs, Cultivate Forecasts will make an HTTP POST request to a URL that you specify. The body of the request will contain JSON matching that from the API documentation for each of those models (e.g. a question creation post-hook will contain the question JSON shown <a href="#questions">here</a>).</p>
+
+<p>To set up a post-hook for any of these APIs, contact Cultivate Labs&rsquo; technical support team: <a href="mailto:tech@cultivatelabs.com">tech@cultivatelabs.com</a></p>
+
           <h1 id="aggregate-predictions">Aggregate Predictions</h1>
 
 <h2 id="aggregate-predictions-list">Aggregate Predictions List</h2>
@@ -528,14 +536,6 @@
 <td>The current consensus value for this method</td>
 </tr>
 </tbody></table>
-
-          <h1 id="push-apis">Push APIs</h1>
-
-<p>Cultivate Forecasts provides push-based APIs for <a href="#questions">question</a> creation, update, resolution, and <a href="#clarifications">clarification</a>.</p>
-
-<p>For each of these APIs, Cultivate Forecasts will make an HTTP POST request to a URL that you specify. The body of the request will contain JSON matching that from the API documentation for each of those models (e.g. a question creation post-hook will contain the question JSON shown <a href="#questions">here</a>).</p>
-
-<p>To set up a post-hook for any of these APIs, contact Cultivate Labs&rsquo; technical support team: <a href="mailto:tech@cultivatelabs.com">tech@cultivatelabs.com</a></p>
 
           <h1 id="clarifications">Clarifications</h1>
 
