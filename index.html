@@ -227,7 +227,7 @@
       <div class="content">
         <h1 id="getting-started">Getting Started</h1>
 
-<p>Each performer will be assigned a subdomain for use in HFC. Throughout the API documentation, you&rsquo;ll see URL&rsquo;s in the format of <code class="prettyprint">https://yoursite.hfc-staging.com</code>. Once you have your subdomain, you should replace <code class="prettyprint">yoursite</code> with your assigned subdomain. Contact Cultivate Labs at <code class="prettyprint">techsupport@hybridforecasting.com</code> to obtain your assigned subdomain.</p>
+<p>Each performer will be assigned a subdomain for use in HFC. Throughout the API documentation, you&rsquo;ll see URL&rsquo;s in the format of <code class="prettyprint">https://yoursite.hfc-staging.com</code>. Once you have your subdomain, you should replace <code class="prettyprint">yoursite</code> with your assigned subdomain. Contact Cultivate Labs at <a href="mailto:techsupport@hybridforecasting.com">techsupport@hybridforecasting.com</a> to obtain your assigned subdomain.</p>
 
 <h1 id="environments">Environments</h1>
 
@@ -273,55 +273,12 @@
 
 <h1 id="authentication">Authentication</h1>
 
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yoursite.hfc-staging.com/oauth/token"</span> <span class="se">\</span>
-  -X POST <span class="se">\</span>
-  -d <span class="nv">grant_type</span><span class="o">=</span>password <span class="se">\</span>
-  -d <span class="nv">email</span><span class="o">=</span>user@example.com <span class="se">\</span>
-  -d <span class="nv">password</span><span class="o">=</span>password
+<p>Authentication in the Cultivate Forecasts API is done via OAuth. To obtain an oauth token, contact <a href="mailto:techsupport@hybridforecasting.com">techsupport@hybridforecasting.com</a>.</p>
+
+<p>All requests to the various APIs should include your token as part of an authorization header. You can see an example curl request to the right.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yoursite.hfc-staging.com/api/v1/me"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
 </code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="mi">1438910165</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>To access the Cultivate Forecasts API, you need an oauth token. You can generate one by making a POST request to <code class="prettyprint">/oauth/token</code> with email, password, and grant_type parameters.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://yoursite.hfc-staging.com/oauth/token</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>grant_type</td>
-<td>password</td>
-</tr>
-<tr>
-<td>email</td>
-<td>Your email address</td>
-</tr>
-<tr>
-<td>password</td>
-<td>Your password</td>
-</tr>
-</tbody></table>
-
-<p>For subsequent requests, you must include your token as part of an authorization header.</p>
-
           <h1 id="push-apis">Push APIs</h1>
 
 <p>Cultivate Forecasts provides push-based APIs for <a href="#questions">question</a> creation, update, resolution, and <a href="#clarifications">clarification</a>.</p>
