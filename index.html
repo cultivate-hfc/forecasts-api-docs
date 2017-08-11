@@ -287,213 +287,6 @@
 
 <p>To set up a post-hook for any of these APIs, contact Cultivate Labs&rsquo; technical support team: <a href="mailto:tech@cultivatelabs.com">tech@cultivatelabs.com</a></p>
 
-          <h1 id="aggregate-predictions">Aggregate Predictions</h1>
-
-<h2 id="aggregate-predictions-list">Aggregate Predictions List</h2>
-
-<p>There are many different methods to combine a set of individual forecasts into a consensus forecast. Within Cultivate Forecasts, the consensus can be calculated using 5 different aggregation algorithms: mean, median, voting, logit, and l2e.  </p>
-
-<p>This endpoint provides a set of current consensus values for each question &amp; potential answer using each of the 5 aggregation algorithms.</p>
-
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yoursite.hfc-staging.com/aggregation/api/v1/questions"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"questions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"question-name-1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"answers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer-name-3"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"strategies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mean"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeightedMean"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Median"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeightedMedian"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Voting"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.333333</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeightedVoting"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.333333</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Logit"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.040042</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"L2e"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.801018</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">119</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer-name-2"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"strategies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mean"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.333333</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeightedMean"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.333333</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Median"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeightedMedian"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Voting"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.333333</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeightedVoting"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.333333</span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Logit"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.956466</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"L2e"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.633632</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">118</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"answer-name-1"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"strategies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mean"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.366667</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeightedMean"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.366667</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Median"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeightedMedian"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Voting"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.333333</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WeightedVoting"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.333333</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Logit"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="w">
-            </span><span class="p">},</span><span class="w">
-            </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"L2e"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.717251</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://yoursite.hfc-staging.com/aggregation/api/v1/questions</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>page</td>
-<td>0</td>
-<td>Pagination page number</td>
-</tr>
-</tbody></table>
-
-<h3 id="attribute-descriptions">Attribute Descriptions</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>questions.id</td>
-<td>integer</td>
-<td>The id of the question these consensus values are associated with</td>
-</tr>
-<tr>
-<td>questions.name</td>
-<td>string</td>
-<td>The name of the question these consensus values are associated with</td>
-</tr>
-<tr>
-<td>questions.answers.id</td>
-<td>integer</td>
-<td>The id of the answer these consensus values are associated with</td>
-</tr>
-<tr>
-<td>questions.answers.name</td>
-<td>string</td>
-<td>The name of the answer these consensus values are associated with</td>
-</tr>
-<tr>
-<td>questions.answers.strategies</td>
-<td>array</td>
-<td>An array of method/value pairs for the various consensus values</td>
-</tr>
-<tr>
-<td>questions.answers.strategies.method</td>
-<td>string</td>
-<td>The name of the method used to compute this consensus value</td>
-</tr>
-<tr>
-<td>questions.answers.strategies.value</td>
-<td>float</td>
-<td>The current consensus value for this method</td>
-</tr>
-</tbody></table>
-
           <h1 id="clarifications">Clarifications</h1>
 
 <h2 id="clarifications-list">Clarifications List</h2>
@@ -571,6 +364,181 @@
 <td>content</td>
 <td>string</td>
 <td>The actual text of the clarification</td>
+</tr>
+</tbody></table>
+
+          <h1 id="consensus-history">Consensus History</h1>
+
+<h2 id="consensus-history-list">Consensus History List</h2>
+
+<p>Each time a user submits a forecast, the consensus forecasts for that question&rsquo;s answers are recalculated. Within Cultivate Forecasts, the consensus can be calculated using 5 different aggregation algorithms: mean, median, voting, logit, and l2e. This endpoint provides a historical record of each consensus forecast change.</p>
+
+<p>When using this API, you should always utilize the <code class="prettyprint">created_after</code> parameter to pull only those records that have been created since you last accessed the API. <strong>Do not pull</strong> every record/page of the history.</p>
+
+<p>Each record contains a question id, an answer id, the consensus forecast, the time at which this was the consensus forecast (in the <code class="prettyprint">consensus_at</code> field), and the aggregation algorithm used to calculate the consensus. The records contain two value fields: <code class="prettyprint">value</code> and <code class="prettyprint">normalized_value</code>. The <code class="prettyprint">value</code> field is the raw output from the aggregation algorithm, while the <code class="prettyprint">normalized_value</code> is the <code class="prettyprint">value</code> field normalized to ensure the answer options in a question sum to 100%.</p>
+
+<p>Prior to question/answer resolution, the most recent (as determined by <code class="prettyprint">consensus_at</code>) record can be considered the current consensus for that answer.</p>
+
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yoursite.cultivateforecasts.com/aggregation/api/v1/consensus_histories"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"consensus_histories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T14:38:00.770Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Strategies::WeightedVoting"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decay_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Decay::PercentRecent"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decay_args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.32</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11T14:38:01.370Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11T14:38:01.370Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"normalized_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1111037</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T14:38:00.770Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Strategies::WeightedMedian"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decay_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Decay::PercentRecent"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decay_args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.684</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11T14:38:01.367Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11T14:38:01.367Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"normalized_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1111037</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"prediction_set_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"consensus_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-09T14:38:00.770Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"strategy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Strategies::WeightedMean"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decay_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregation::Decay::PercentRecent"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"decay_args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"percent"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.684</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11T14:38:01.364Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08-11T14:38:01.364Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3333</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"normalized_value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1111037</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET https://yoursite.cultivateforecasts.com/aggregation/api/v1/consensus_histories</code></p>
+
+<h3 id="query-parameters">Query Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>0</td>
+<td>Pagination page number</td>
+</tr>
+<tr>
+<td>created_before</td>
+<td>none</td>
+<td>Returns only history records created before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
+</tr>
+<tr>
+<td>created_after</td>
+<td>none</td>
+<td>Returns only history records created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
+</tr>
+</tbody></table>
+
+<h3 id="attribute-descriptions">Attribute Descriptions</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>The id of the consensus history record</td>
+</tr>
+<tr>
+<td>answer_id</td>
+<td>integer</td>
+<td>The answer that this record pertains to</td>
+</tr>
+<tr>
+<td>question_id</td>
+<td>integer</td>
+<td>The answer that this record pertains to</td>
+</tr>
+<tr>
+<td>prediction_set_id</td>
+<td>integer</td>
+<td>The prediction set that caused the consensus change</td>
+</tr>
+<tr>
+<td>consensus_at</td>
+<td>datetime</td>
+<td>The time at which this was the consensus for the answer</td>
+</tr>
+<tr>
+<td>strategy</td>
+<td>string</td>
+<td>The aggregation algorithm used to calculate the value</td>
+</tr>
+<tr>
+<td>decay_method</td>
+<td>string</td>
+<td>The decay method, if any, used to decay forecasts included in the calculation</td>
+</tr>
+<tr>
+<td>decay_args</td>
+<td>integer</td>
+<td>Parameters/configuration fed to the decay method, if any</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>datetime</td>
+<td>The time at which this consensus history record was created</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>datetime</td>
+<td>The time at which this consensus history record was last updated</td>
+</tr>
+<tr>
+<td>value</td>
+<td>integer</td>
+<td>The raw output value from the aggregation algorithm</td>
+</tr>
+<tr>
+<td>normalized_value</td>
+<td>integer</td>
+<td>The <code class="prettyprint">value</code> field normalized to ensure the answer options for the question sum to 1.0</td>
 </tr>
 </tbody></table>
 
