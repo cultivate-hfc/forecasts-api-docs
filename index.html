@@ -379,10 +379,12 @@
 
 <p>Prior to question/answer resolution, the most recent (as determined by <code class="prettyprint">consensus_at</code>) record can be considered the current consensus for that answer.</p>
 
+<p>During the pre-RCT phase of HFC, you should use <code class="prettyprint">https://www.gjopen.com</code> as the domain for this API. Once the RCT begins, this forecast stream will be provided on the domain <code class="prettyprint">https://control.hfc-staging.com</code>.</p>
+
 <blockquote>
 <p>Request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yoursite.cultivateforecasts.com/aggregation/api/v1/consensus_histories"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histories"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
 </code></pre>
 <blockquote>
@@ -443,7 +445,13 @@
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://yoursite.cultivateforecasts.com/aggregation/api/v1/consensus_histories</code></p>
+<p>Pre-RCT:</p>
+
+<p><code class="prettyprint">GET https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histories</code></p>
+
+<p>Once RCT begins:</p>
+
+<p><code class="prettyprint">GET https://www.gjopen.com/aggregation/api/v1/consensus_histories</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -812,7 +820,7 @@
   -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-    -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">fundamental_activity_unit</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">membership_id</span><span class="se">\"</span><span class="s2">:45,</span><span class="se">\"</span><span class="s2">question_id</span><span class="se">\"</span><span class="s2">:83, </span><span class="se">\"</span><span class="s2">fau_type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">forecast</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">metadata</span><span class="se">\"</span><span class="s2">: {</span><span class="se">\"</span><span class="s2">foo</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">bar</span><span class="se">\"</span><span class="s2">}}}"</span>
+    -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">fundamental_activity_unit</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">membership_id</span><span class="se">\"</span><span class="s2">:45,</span><span class="se">\"</span><span class="s2">question_id</span><span class="se">\"</span><span class="s2">:83, </span><span class="se">\"</span><span class="s2">fau_type</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">forecast</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">performed_at</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">2017-01-17T12:00:01.299Z</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">metadata</span><span class="se">\"</span><span class="s2">: {</span><span class="se">\"</span><span class="s2">foo</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">bar</span><span class="se">\"</span><span class="s2">}}}"</span>
 </code></pre>
 <blockquote>
 <p>Request body example:</p>
@@ -821,6 +829,7 @@
   </span><span class="s2">"fundamental_activity_unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
     </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">83</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"performed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T12:00:01.299Z"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"fau_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"foo"</span><span class="p">:</span><span class="s2">"bar"</span><span class="w">
@@ -835,6 +844,7 @@
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
   </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
   </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">83</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"performed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T12:00:01.299Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fau_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"forecast"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span><span class="s2">"bar"</span><span class="p">},</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-01-17T12:00:01.299Z"</span><span class="p">,</span><span class="w">
@@ -868,6 +878,11 @@
 <td>fau_type</td>
 <td>Yes</td>
 <td>A string describing the type of FAU (e.g. forecast, annotation, rating)</td>
+</tr>
+<tr>
+<td>performed_at</td>
+<td>Yes</td>
+<td>An ISO8601-formatted timestamp of when the FAU was performed</td>
 </tr>
 <tr>
 <td>metadata</td>
@@ -904,6 +919,11 @@
 <td>question_id</td>
 <td>integer</td>
 <td>The question id that this action was performed on.</td>
+</tr>
+<tr>
+<td>performed_at</td>
+<td>Yes</td>
+<td>An ISO8601-formatted timestamp of when the FAU was performed</td>
 </tr>
 <tr>
 <td>fau_type</td>
@@ -1101,12 +1121,14 @@
 
 <p>A prediction set is the primary model for storing forecasts within Cultivate Forecasts. A prediction set will contain one prediction for each answer in the question.</p>
 
+<p>During the pre-RCT phase of HFC, you should use <code class="prettyprint">https://www.gjopen.com</code> as the domain for this API. Once the RCT begins, this forecast stream will be provided on the domain <code class="prettyprint">https://control.hfc-staging.com</code>.</p>
+
 <h2 id="prediction-sets-list">Prediction Sets List</h2>
 
 <blockquote>
 <p>Request:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yoursite.hfc-staging.com/api/v1/prediction_sets"</span> <span class="se">\</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://control.hfc-staging.com/api/v1/prediction_sets"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
 </code></pre>
 <blockquote>
@@ -1178,7 +1200,13 @@
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://yoursite.hfc-staging.com/api/v1/prediction_sets</code></p>
+<p>Pre-RCT:</p>
+
+<p><code class="prettyprint">GET https://www.gjopen.com/api/v1/prediction_sets</code></p>
+
+<p>Once RCT begins:</p>
+
+<p><code class="prettyprint">GET https://control.hfc-staging.com/api/v1/prediction_sets</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
