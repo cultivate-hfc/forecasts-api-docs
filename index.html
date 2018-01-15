@@ -291,7 +291,7 @@
 
 <h2 id="clarifications-list">Clarifications List</h2>
 
-<p>This API returns a list of question clarifications. These are used to officially clarify questions about a question and its resolution criteria.</p>
+<p>This API returns a list of question clarifications. These are used to officially clarify questions about a question and its resolution criteria. Clarifications are also embedded directly in the question JSON in the <a href="#questions">questions</a> API.</p>
 
 <blockquote>
 <p>Request:</p>
@@ -1431,7 +1431,14 @@
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:35.933Z"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"clarifications"</span><span class="p">:[{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"question_id"</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"content"</span><span class="p">:</span><span class="s2">"clarification-content-1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="s2">"2018-01-15T21:45:32.495Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="s2">"2018-01-15T21:45:32.495Z"</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
@@ -1649,6 +1656,11 @@
 <td>use_ordinal_scoring</td>
 <td>boolean</td>
 <td>Whether or not this question uses ordinal scoring for calculating Brier scores</td>
+</tr>
+<tr>
+<td>clarifications</td>
+<td>array</td>
+<td>An array of clarifications issued for the question. Used to clarify things like resolution criteria for the question.</td>
 </tr>
 </tbody></table>
 
