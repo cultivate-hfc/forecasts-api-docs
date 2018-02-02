@@ -279,6 +279,12 @@
 <pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yoursite.hfc-staging.com/api/v1/me"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
 </code></pre>
+          <h1 id="pagination">Pagination</h1>
+
+<p>All list-based endpoints utilize pagination and return only the first page by default. To retrieve subsequent pages, you can append a <code class="prettyprint">page</code> parameter to your request (e.g. <code class="prettyprint">/api/v1/questions?page=2</code>).</p>
+
+<p>All paginated endpoints will also include 2 pagination-related response headers: <code class="prettyprint">X-Total-Page-Count</code> and <code class="prettyprint">X-Total-Record-Count</code>. <code class="prettyprint">X-Total-Page-Count</code> contains the total number of pages available for your request, while <code class="prettyprint">X-Total-Record-Count</code> contains the total number of records that will be included across all of those pages.</p>
+
           <h1 id="push-apis">Push APIs</h1>
 
 <p>Cultivate Forecasts provides push-based APIs for <a href="#questions">question</a> creation, update, resolution, and <a href="#clarifications">clarification</a>.</p>
