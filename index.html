@@ -703,19 +703,30 @@
 <td>A JSON-formatted string containing metadata describing how this forecast was generated.</td>
 </tr>
 <tr>
-<td>external_predictor_attributes.method_name</td>
+<td>external_predictions_attributes</td>
+<td>Yes</td>
+<td>An array of external prediction objects that are part of this prediction set. Valid parameters for external predictions are listed below.</td>
+</tr>
+</tbody></table>
+
+<h3 id="embedded-external-predictor-parameters">Embedded External Predictor Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required?</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>method_name</td>
 <td>Yes</td>
 <td>A string identifying the method you&rsquo;re using to generate this forecast. Can be any string.</td>
 </tr>
 <tr>
-<td>external_predictor_attributes.exclude_from_best_method</td>
+<td>exclude_from_best_method</td>
 <td>No</td>
 <td>A boolean indicating whether this is a experimental or official method.</td>
-</tr>
-<tr>
-<td>external_predictions_attributes</td>
-<td>Yes</td>
-<td>An array of external prediction objects that are part of this prediction set. Valid parameters for external predictions are listed below.</td>
 </tr>
 </tbody></table>
 
