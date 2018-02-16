@@ -599,11 +599,11 @@
 
 <p>Submissions should also contain a <code class="prettyprint">metadata</code> field. This string should contain JSON-formatted information about how the forecast was generated and any associated parameters that were used to generate it.</p>
 
-<h3 id="official-vs-experimental-method-designation">Official vs. Experimental Method Designation</h3>
+<h3 id="official-vs-experimental-vs-machine-method-designation">Official vs. Experimental vs. Machine Method Designation</h3>
 
-<p>The first time you submit a forecast for a method, you should designate whether the method is an official or experimental method. Once this designation has been set (via the first forecast), it cannot be changed.</p>
+<p>The first time you submit a forecast for a method, you should designate the method type. Once this designation has been set (via the first forecast), it cannot be changed.</p>
 
-<p>To designate a method as experimental, you should set <code class="prettyprint">exclude_from_best_method</code> to <code class="prettyprint">true</code> in the <code class="prettyprint">external_predictor_attributes</code> of your request body. The request body example to the right shows an example of this. If you want a method to be considered an official method, you can omit the <code class="prettyprint">exclude_from_best_method</code> or set it to <code class="prettyprint">false</code>.</p>
+<p>To designate a method type, you should include a <code class="prettyprint">method_type</code> value in the <code class="prettyprint">external_predictor_attributes</code> of your request body. The request body example to the right shows an example of this. The options for this value are: <code class="prettyprint">official</code>, <code class="prettyprint">experimental</code>, and <code class="prettyprint">machine</code>.</p>
 
 <blockquote>
 <p>Request:</p>
@@ -624,7 +624,7 @@
     </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="s2">"foo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w"> </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span><span class="w">
     </span><span class="s2">"external_predictor_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"exclude_from_best_method"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="s2">"method_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"experimental"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"external_predictions_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -648,6 +648,7 @@
   </span><span class="s2">"site_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
   </span><span class="s2">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"method_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"experimental"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-15T21:07:04.092Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-15T21:07:04.092Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"forecast_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-15T21:07:04Z"</span><span class="p">,</span><span class="w">
@@ -724,9 +725,9 @@
 <td>A string identifying the method you&rsquo;re using to generate this forecast. Can be any string.</td>
 </tr>
 <tr>
-<td>exclude_from_best_method</td>
-<td>No</td>
-<td>A boolean indicating whether this is a experimental or official method.</td>
+<td>method_type</td>
+<td>On initial forecast</td>
+<td>A method type designation. Options include: <code class="prettyprint">official</code>, <code class="prettyprint">experimental</code>, and <code class="prettyprint">machine</code>.</td>
 </tr>
 </tbody></table>
 
