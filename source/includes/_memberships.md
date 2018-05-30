@@ -31,13 +31,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
         "id": 1,
         "email": "user@example.com",
         "created_at": "2015-08-04T00:21:34.524Z",
-        "updated_at": "2015-08-07T00:33:33.969Z",
-        "username": "superman",
-        "first_name": "Clark",
-        "last_name": "Kent",
-        "last_pageview_at": "2015-08-07T00:33:33.967Z",
-        "last_prediction_at": null,
-        "description": "He's a superhero"
+        "updated_at": "2015-08-07T00:33:33.969Z"
       }
     },
     {
@@ -52,13 +46,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
         "id": 2,
         "email": "user2@example.com",
         "created_at": "2015-08-04T00:21:34.924Z",
-        "updated_at": "2015-08-04T00:21:34.924Z",
-        "username": "superman2",
-        "first_name": "Clark",
-        "last_name": "Kent 2",
-        "last_pageview_at": null,
-        "last_prediction_at": null,
-        "description": "He's a superhero2"
+        "updated_at": "2015-08-04T00:21:34.924Z"
       }
     }
   ]
@@ -92,9 +80,3 @@ avatar_url | string | A URL containing an avatar image for the user
 role | string | The role/privileges of the membership. Can be "user" or "admin"
 user.id | integer | The id of the user
 user.email | string | The email of the user
-user.username | string | The username of the user
-user.first_name | string | The first name of the user
-user.last_name | string | The last name of the user
-user.last_pageview_at | date | The timestamp of the user's last pageview
-user.last_prediction_at | date | The timestamp of the user's last forecast
-user.description | string | The user's self-inputted description
