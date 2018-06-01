@@ -253,23 +253,7 @@
 
 <h2 id="te-furnished-data-stream-environments">T&amp;E-furnished Data Stream Environments</h2>
 
-<p>In addition to these two primary environments, the T&amp;E team is providing a stream of <a href="#prediction-sets">individual-level forecasts</a> and <a href="#aggregate-predictions">aggregate &ldquo;crowd&rdquo; forecasts</a> that are derived from two additional environments. During phase 1a, the data streams will be derived from an “HFC Challenge” hosted on the Good Judgment Open (GJO) platform. During phase 1b-4, the same streams will be derived from the benchmark condition The domain used for accessing both of these API’s will be dependent on which source is currently furnishing the data (and is different from the Performer-specific subdomain used for other API’s). During Phase 1a, https://www.gjopen.com should be used as the domain. During Phase 1b-4, https://control.hybridforecasting.com should be used.</p>
-
-<table><thead>
-<tr>
-<th>Phase</th>
-<th>Domain</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Phase 1a</td>
-<td>https://www.gjopen.com</td>
-</tr>
-<tr>
-<td>Phase 1b-4</td>
-<td>https://control.hybridforecasting.com</td>
-</tr>
-</tbody></table>
+<p>In addition to these two primary environments, the T&amp;E team is providing a stream of <a href="#prediction-sets">individual-level forecasts</a> and <a href="#aggregate-predictions">aggregate &ldquo;crowd&rdquo; forecasts</a>. These streams are derived from the benchmark condition. The domain used for accessing both of these API’s will use the <code class="prettyprint">control</code> subdomain (e.g. <code class="prettyprint">https://control.hybridforecasting.com</code>), not your assigned subdomain. </p>
 
 <h1 id="authentication">Authentication</h1>
 
@@ -385,7 +369,7 @@
 
 <p>Prior to question/answer resolution, the most recent (as determined by <code class="prettyprint">consensus_at</code>) record can be considered the current consensus for that answer.</p>
 
-<p>During the pre-RCT phase of HFC, you should use <code class="prettyprint">https://www.gjopen.com</code> as the domain for this API. Once the RCT begins, this forecast stream will be provided on the domain <code class="prettyprint">https://control.hfc-staging.com</code>.</p>
+<p>This forecast stream will be provided on the <code class="prettyprint">control</code> subdomain domain (e.g. <code class="prettyprint">https://control.hfc-staging.com</code>), not on your assigned subdomain.</p>
 
 <blockquote>
 <p>Request:</p>
@@ -457,13 +441,7 @@
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p>Pre-RCT:</p>
-
 <p><code class="prettyprint">GET https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histories</code></p>
-
-<p>Once RCT begins:</p>
-
-<p><code class="prettyprint">GET https://www.gjopen.com/aggregation/api/v1/consensus_histories</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -995,152 +973,13 @@
 
           <h1 id="memberships">Memberships</h1>
 
-<h2 id="memberships-list">Memberships List</h2>
-
-<p>Each user in Cultivate Forecasts has a single user record &amp; user_id. However, a user can be a member of multiple sites. A membership record associates a user to a site. This endpoint provides a list of membership records for a given site and embeds the user record within each membership.</p>
-
-<p>This endpoint is only accessible to site administrators.</p>
-
-<blockquote>
-<p>Request:</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://yoursite.hfc-staging.com/api/v1/memberships"</span> <span class="se">\</span>
-  -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span>
-</code></pre>
-<blockquote>
-<p>Response:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"memberships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"site_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:34.623Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:34.651Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ident/default_avatars/level-1-1.png"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:34.524Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-07T00:33:33.969Z"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"site_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:34.948Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:37.438Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ident/default_avatars/level-0-1.png"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user2@example.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:34.924Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:34.924Z"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET https://yoursite.hfc-staging.com/api/v1/memberships</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>page</td>
-<td>0</td>
-<td>Pagination page number</td>
-</tr>
-<tr>
-<td>include_profile_question_responses</td>
-<td>false</td>
-<td>Passing &ldquo;true&rdquo; for this value will include profile questions and responses for each membership.</td>
-</tr>
-<tr>
-<td>created_before</td>
-<td>none</td>
-<td>Returns only memberships created before the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
-</tr>
-<tr>
-<td>created_after</td>
-<td>none</td>
-<td>Returns only memberships created after the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
-</tr>
-<tr>
-<td>update_before</td>
-<td>none</td>
-<td>Returns only memberships update before the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
-</tr>
-<tr>
-<td>update_after</td>
-<td>none</td>
-<td>Returns only memberships update after the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
-</tr>
-</tbody></table>
-
-<h3 id="attribute-descriptions">Attribute Descriptions</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>integer</td>
-<td>The id of the membership</td>
-</tr>
-<tr>
-<td>site_id</td>
-<td>integer</td>
-<td>The id of the site that this membership belongs to</td>
-</tr>
-<tr>
-<td>user_id</td>
-<td>integer</td>
-<td>The id of the user that this membership belongs to</td>
-</tr>
-<tr>
-<td>avatar_url</td>
-<td>string</td>
-<td>A URL containing an avatar image for the user</td>
-</tr>
-<tr>
-<td>role</td>
-<td>string</td>
-<td>The role/privileges of the membership. Can be &ldquo;user&rdquo; or &ldquo;admin&rdquo;</td>
-</tr>
-<tr>
-<td>user.id</td>
-<td>integer</td>
-<td>The id of the user</td>
-</tr>
-<tr>
-<td>user.email</td>
-<td>string</td>
-<td>The email of the user</td>
-</tr>
-</tbody></table>
+<p>Memberships API documentation is available upon request. If you need access, please contact <a href="mailto:ben@cultivatelabs.com">ben@cultivatelabs.com</a></p>
 
           <h1 id="prediction-sets">Prediction Sets</h1>
 
 <p>A prediction set is the primary model for storing forecasts within Cultivate Forecasts. A prediction set will contain one prediction for each answer in the question.</p>
 
-<p>During the pre-RCT phase of HFC, you should use <code class="prettyprint">https://www.gjopen.com</code> as the domain for this API. Once the RCT begins, this forecast stream will be provided on the domain <code class="prettyprint">https://control.hfc-staging.com</code>.</p>
+<p>This forecast stream will be provided on the <code class="prettyprint">control</code> subdomain domain (e.g. <code class="prettyprint">https://control.hfc-staging.com</code>), not on your assigned subdomain.</p>
 
 <h2 id="prediction-sets-list">Prediction Sets List</h2>
 
@@ -1218,12 +1057,6 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
-
-<p>Pre-RCT:</p>
-
-<p><code class="prettyprint">GET https://www.gjopen.com/api/v1/prediction_sets</code></p>
-
-<p>Once RCT begins:</p>
 
 <p><code class="prettyprint">GET https://control.hfc-staging.com/api/v1/prediction_sets</code></p>
 
