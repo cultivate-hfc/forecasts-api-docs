@@ -10,7 +10,7 @@ Each record contains a question id, an answer id, the consensus forecast, the ti
 
 Prior to question/answer resolution, the most recent (as determined by `consensus_at`) record can be considered the current consensus for that answer.
 
-During the pre-RCT phase of HFC, you should use `https://www.gjopen.com` as the domain for this API. Once the RCT begins, this forecast stream will be provided on the domain `https://control.hfc-staging.com`.
+This forecast stream will be provided on the `control` subdomain domain (e.g. `https://control.hfc-staging.com`), not on your assigned subdomain.
 
 > Request:
 
@@ -84,13 +84,7 @@ curl "https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histor
 
 ### HTTP Request
 
-Pre-RCT:
-
 `GET https://control.cultivateforecasts.com/aggregation/api/v1/consensus_histories`
-
-Once RCT begins:
-
-`GET https://www.gjopen.com/aggregation/api/v1/consensus_histories`
 
 ### Query Parameters
 

@@ -3,7 +3,8 @@
 
 A prediction set is the primary model for storing forecasts within Cultivate Forecasts. A prediction set will contain one prediction for each answer in the question.
 
-During the pre-RCT phase of HFC, you should use `https://www.gjopen.com` as the domain for this API. Once the RCT begins, this forecast stream will be provided on the domain `https://control.hfc-staging.com`.
+This forecast stream will be provided on the `control` subdomain domain (e.g. `https://control.hfc-staging.com`), not on your assigned subdomain.
+
 
 ## Prediction Sets List
 
@@ -83,12 +84,6 @@ curl "https://control.hfc-staging.com/api/v1/prediction_sets" \
 ```
 
 ### HTTP Request
-
-Pre-RCT:
-
-`GET https://www.gjopen.com/api/v1/prediction_sets`
-
-Once RCT begins:
 
 `GET https://control.hfc-staging.com/api/v1/prediction_sets`
 

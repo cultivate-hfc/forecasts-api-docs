@@ -14,7 +14,7 @@ includes:
 - consensus_history
 - external_prediction_sets
 - fundamental_activity_units
-- memberships
+- memberships_removed
 - prediction_sets
 - questions
 - scores
@@ -40,12 +40,7 @@ Production | https://yoursite.hybridforecasting.com
 
 ## T&E-furnished Data Stream Environments
 
-In addition to these two primary environments, the T&E team is providing a stream of [individual-level forecasts](#prediction-sets) and [aggregate "crowd" forecasts](#aggregate-predictions) that are derived from two additional environments. During phase 1a, the data streams will be derived from an “HFC Challenge” hosted on the Good Judgment Open (GJO) platform. During phase 1b-4, the same streams will be derived from the benchmark condition The domain used for accessing both of these API’s will be dependent on which source is currently furnishing the data (and is different from the Performer-specific subdomain used for other API’s). During Phase 1a, https://www.gjopen.com should be used as the domain. During Phase 1b-4, https://control.hybridforecasting.com should be used.
-
-Phase | Domain
---------- | -----------
-Phase 1a | https://www.gjopen.com
-Phase 1b-4 | https://control.hybridforecasting.com
+In addition to these two primary environments, the T&E team is providing a stream of [individual-level forecasts](#prediction-sets) and [aggregate "crowd" forecasts](#aggregate-predictions). These streams are derived from the benchmark condition. The domain used for accessing both of these API’s will use the `control` subdomain (e.g. `https://control.hybridforecasting.com`), not your assigned subdomain. 
 
 # Authentication
 
