@@ -113,7 +113,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/scores" \
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
-score_type | none | Returns scores of a specific type. Possible values: `answer`, `question`, `challenge`, `site`
+score_type | none | Returns scores of a specific type. Possible values: `component` (aka daily scores), `answer`, `question`, `challenge`, `site`
 with_membership_id | none | If the value of this parameter is `true`, only scores with a membership_id set will be returned
 without_membership_id | none | If the value of this parameter is `true`, only scores without a membership_id set will be returned
 scoreable_id | none | Filters scores to include only scores for a single scoreable. This can be the id of an `answer`, `question`, `challenge`, or `site` record. If a value is passed for this parameter, the `score_type` record must also be set. So if you wanted scores for just a single question, you would pass `score_type=question&scoreable_id=123`
