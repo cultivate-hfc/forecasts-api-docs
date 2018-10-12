@@ -26,6 +26,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/scores" \
       "value": "0.25",
       "scoreable_id": 4080,
       "scoreable_type": "Forecast::Answer",
+      "site_id": 123,
       "membership_id": null,
       "period_started_at": null,
       "period_ended_at": null,
@@ -46,6 +47,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/scores" \
       "value": "0.25",
       "scoreable_id": 2554,
       "scoreable_type": "Forecast::Question",
+      "site_id": 123,
       "membership_id": 8573,
       "period_started_at": null,
       "period_ended_at": null,
@@ -66,6 +68,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/scores" \
       "value": "0.25",
       "scoreable_id": 406,
       "scoreable_type": "Forecast::Challenge",
+      "site_id": 123,
       "membership_id": 8573,
       "period_started_at": null,
       "period_ended_at": null,
@@ -86,6 +89,7 @@ curl "https://yoursite.cultivateforecasts.com/api/v1/scores" \
       "value": "0.25",
       "scoreable_id": 5036,
       "scoreable_type": "Ident::Site",
+      "site_id": 5035,
       "membership_id": null,
       "period_started_at": null,
       "period_ended_at": null,
@@ -142,3 +146,4 @@ median_brier_score_for_relative | float | The median brier score for all forecas
 participation_rate | float | The percentage of the days that the question ran in which the user was participating
 prediction_made_by_id | integer | The id of the record that submitted the forecast that generated this score. Typically a membership, but can also be a team or an external predictor
 prediction_made_by_type | type | The type of the record that submitted the forecast that generated this score.
+site_id | integer | The id of the site that generated the score.
