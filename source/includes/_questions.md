@@ -32,6 +32,9 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
       "comments_count": 0,
       "created_at": "2015-08-04T00:21:35.910Z",
       "updated_at": "2015-08-04T00:21:35.910Z",
+      "scoring_start_time": "2015-09-15T00:21:35.906Z",
+      "scoring_end_time": "2015-09-15T00:21:35.906Z",
+      "state": "resolved",
       "active?": false,
       "resolved?": true,
       "resolution_notes": [
@@ -125,6 +128,9 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
       "comments_count": 0,
       "created_at": "2015-08-04T00:21:35.953Z",
       "updated_at": "2015-08-04T00:21:35.953Z",
+      "scoring_start_time": "2015-09-15T00:21:35.906Z",
+      "scoring_end_time": null,
+      "state": "pending",
       "active?": true,
       "resolved?": false,
       "use_ordinal_scoring": false,
@@ -199,6 +205,9 @@ resolved | boolean | Whether or not this question has been resolved
 resolution_notes | array | Any notes/information provided by an admin describing the resolution of the question and any data sources used.
 use_ordinal_scoring | boolean | Whether or not this question uses ordinal scoring for calculating Brier scores
 clarifications | array | An array of clarifications issued for the question. Used to clarify things like resolution criteria for the question.
+state | string | The current state of the question. Options include: `active`, `ended`, `pending`, `refunded`, `resolved`, `voided`
+scoring_start_time | datetime | The time at which scoring starts for this question.
+scoring_end_time | datetime | The time at which scoring ends for this question.
 
 ### Answer Attributes
 

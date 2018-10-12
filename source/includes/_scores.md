@@ -31,6 +31,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/audit_trail/scores" \
       "value": "0.25",
       "scoreable_id": 567,
       "scoreable_type": "Forecast::Question",
+      "site_id": 123,
       "period_started_at": "2018-04-10T00:00:00.000Z",
       "period_ended_at": "2018-04-10T23:59:59.999Z",
       "created_at": "2018-04-12T14:32:32.802Z",
@@ -47,6 +48,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/audit_trail/scores" \
       "value": "0.25",
       "scoreable_id": 206,
       "scoreable_type": "Forecast::Answer",
+      "site_id": 123,
       "period_started_at": null,
       "period_ended_at": null,
       "created_at": "2018-04-03T14:32:32.984Z",
@@ -63,6 +65,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/audit_trail/scores" \
       "value": "0.25",
       "scoreable_id": 572,
       "scoreable_type": "Forecast::Question",
+      "site_id": 123,
       "period_started_at": null,
       "period_ended_at": null,
       "created_at": "2018-04-06T14:32:33.307Z",
@@ -79,6 +82,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/audit_trail/scores" \
       "value": "0.25",
       "scoreable_id": 1401,
       "scoreable_type": "Ident::Site",
+      "site_id": 1401,
       "period_started_at": null,
       "period_ended_at": null,
       "created_at": "2018-04-12T13:32:33.844Z",
@@ -124,3 +128,4 @@ ordinal_scoring_enabled | boolean | Ordinal scoring can be enabled for questions
 forecasted_probability | float | The method's forecast for this period/day. Only applicable to `ComponentBrierScore`
 forecast_type | string | The manner in which this forecast was generated. Options are `submitted` (directly submitted by the method), `carryover` (forecast was carried over from a previous day), and `uniform_distribution` (equal distribution to given all answers since the method had not yet submitted any forecasts on the question/answer).
 prediction_made_by_method_name | type | The method name of the forecasting method that generated this score.
+site_id | integer | The id of the site that generated the score.
