@@ -205,6 +205,7 @@ resolved | boolean | Whether or not this question has been resolved
 resolution_notes | array | Any notes/information provided by an admin describing the resolution of the question and any data sources used.
 use_ordinal_scoring | boolean | Whether or not this question uses ordinal scoring for calculating Brier scores
 clarifications | array | An array of clarifications issued for the question. Used to clarify things like resolution criteria for the question.
+state | string | The current state of the question. Options include: `active`, `ended`, `pending`, `refunded`, `resolved`, `voided`
 
 ### Answer Attributes
 
