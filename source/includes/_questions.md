@@ -40,6 +40,13 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
       "resolution_notes": [
         "This question was resolved based on the ABC data source."
       ],
+      "metadata": {
+        "Topic": "ACLED riot/protest events",
+        "Domain": "Politics/International Relations",
+        "Region": "Africa",
+        "Country - Primary": "Mozambique",
+        "Country - Secondary": "N/A - Not Country-specific"
+      },
       "use_ordinal_scoring": false,
       "answers": [
         {
@@ -134,6 +141,13 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
       "active?": true,
       "resolved?": false,
       "use_ordinal_scoring": false,
+      "metadata": {
+        "Topic": "ACLED riot/protest events",
+        "Domain": "Politics/International Relations",
+        "Region": "Africa",
+        "Country - Primary": "Mozambique",
+        "Country - Secondary": "N/A - Not Country-specific"
+      },
       "answers": [
         {
           "created_at": "2015-08-04T00:21:35.965Z",
@@ -208,6 +222,7 @@ clarifications | array | An array of clarifications issued for the question. Use
 state | string | The current state of the question. Options include: `active`, `ended`, `pending`, `refunded`, `resolved`, `voided`
 scoring_start_time | datetime | The time at which scoring starts for this question.
 scoring_end_time | datetime | The time at which scoring ends for this question.
+metadata | hash | Contains the `Topic`, `Domain`, `Region`, `Country - Primary`, and `Country - Secondary` for the question
 
 ### Answer Attributes
 
