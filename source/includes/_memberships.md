@@ -66,13 +66,13 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
                 "survey_question_scoring_notes": "the correct answer is worth two points",
                 "survey_question_correct_answer": "abcdef"
               }
-            ]
+            }
           ]
         }
       }
     },
     {
-      "key": "a98jas8fj",
+      "key": "a98jas8fj2",
       "worker_id": "USER_3",
       "user_id": 2,
       "created_at": "2015-08-04T00:21:34.948Z",
@@ -84,6 +84,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
         "email": "user2@example.com",
         "created_at": "2015-08-04T00:21:34.924Z",
         "updated_at": "2015-08-04T00:21:34.924Z"
+        "survey_responses": []
       }
     }
   ]
