@@ -22,21 +22,58 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
     {
       "id": 1,
       "site_id": 1,
+      "site_name": "Carbon"
       "user_id": 1,
       "created_at": "2015-08-04T00:21:34.623Z",
       "updated_at": "2015-08-04T00:21:34.651Z",
-      "avatar": "ident/default_avatars/level-1-1.png",
-      "role": "admin",
       "user": {
-        "id": 1,
-        "email": "user@example.com",
+        "key": "a09sdf8j3f",
+        "worker_id": "USER_3",
         "created_at": "2015-08-04T00:21:34.524Z",
         "updated_at": "2015-08-07T00:33:33.969Z"
+        "survey_responses": [
+          {
+            "id": 1,
+            "user_id": 2,
+            "survey_id": 1,
+            "created_at": "2018-11-08T17:52:21.118Z",
+            "updated_at": "2018-11-08T17:52:21.118Z",
+            "status": "started",
+            "page_order": ["1","2"],
+            "survey_name": "survey-1",
+            "survey_question_responses": [
+              {
+                "id": 1,
+                "survey_question_id": 1,
+                "survey_answer_id": 9,
+                "survey_response_id": 1,
+                "created_at": "2018-11-08T17:52:21.165Z",
+                "updated_at": "2018-11-08T17:52:21.165Z",
+                "question_content": "question-content-1",
+                "answer_content": "abcdef",
+                "survey_question_scoring_notes": "all answers get two points",
+                "survey_question_correct_answer": "abcdef"
+              },
+              {
+                "id": 2,
+                "survey_question_id": 2,
+                "survey_answer_id": 10,
+                "survey_response_id": 1,
+                "created_at": "2018-11-08T17:52:41.165Z",
+                "updated_at": "2018-11-08T17:52:41.165Z",
+                "question_content": "question-content-2",
+                "answer_content": "ghijkl",
+                "survey_question_scoring_notes": "the correct answer is worth two points",
+                "survey_question_correct_answer": "abcdef"
+              }
+            ]
+          ]
+        }
       }
     },
     {
-      "id": 2,
-      "site_id": 1,
+      "key": "a98jas8fj",
+      "worker_id": "USER_3",
       "user_id": 2,
       "created_at": "2015-08-04T00:21:34.948Z",
       "updated_at": "2015-08-04T00:21:37.438Z",
@@ -78,14 +115,8 @@ id | integer | The id of the membership
 site_id | integer | The id of the site that this membership belongs to
 site_name | string | The name of the site that this membership belongs to
 user_id | integer | The id of the user that this membership belongs to
-avatar_url | string | A URL containing an avatar image for the user
-email_disabled | boolean | A flag for whether this membership has disabled email alerts
-featured | boolean | A flag for whether this membership has been featured by the site
-role | string | The role/privileges of the membership. Can be "user" or "admin"
-forecasts_count | integer | The number of forecasts this membership has made
-training_completed_at | datetime | The time & date at which this membership completed training
-user.id | integer | The id of the user
-user.email | string | The email of the user
+user.key | string | A unique key assigned to the user
+user.worker_id | string | The user's worker ID
 
 ### Survey Response Attribute Descriptions
 
