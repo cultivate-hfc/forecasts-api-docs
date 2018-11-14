@@ -3,9 +3,7 @@
 
 ## Memberships List
 
-Each user in Cultivate Forecasts has a single user record & user_id. However, a user can be a member of multiple sites. A membership record associates a user to a site. This endpoint provides a list of membership records for a given site and embeds the user record within each membership.
-
-This endpoint is only accessible to site administrators.
+A list of users assigned to a given site.
 
 > Request:
 
@@ -22,15 +20,13 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
     {
       "id": 1,
       "site_id": 1,
-      "site_name": "Carbon"
+      "site_name": "Carbon",
       "user_id": 1,
       "created_at": "2015-08-04T00:21:34.623Z",
       "updated_at": "2015-08-04T00:21:34.651Z",
       "user": {
-        "key": "a09sdf8j3f",
-        "worker_id": "USER_3",
-        "created_at": "2015-08-04T00:21:34.524Z",
-        "updated_at": "2015-08-07T00:33:33.969Z"
+        "key": "CEJGB744-F89M-UU4C-BC04-357B1D2421738",
+        "worker_id": "CL_JKJ88IUFL",
         "survey_responses": [
           {
             "id": 1,
@@ -62,9 +58,9 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
                 "created_at": "2018-11-08T17:52:41.165Z",
                 "updated_at": "2018-11-08T17:52:41.165Z",
                 "question_content": "question-content-2",
-                "answer_content": "ghijkl",
+                "answer_content": "this is my answer",
                 "survey_question_scoring_notes": "the correct answer is worth two points",
-                "survey_question_correct_answer": "abcdef"
+                "survey_question_correct_answer": "abc123"
               }
             }
           ]
@@ -72,18 +68,15 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
       }
     },
     {
-      "key": "a98jas8fj2",
-      "worker_id": "USER_3",
+      "id": 2,
+      "site_id": 1,
+      "site_name": "Carbon",
       "user_id": 2,
-      "created_at": "2015-08-04T00:21:34.948Z",
-      "updated_at": "2015-08-04T00:21:37.438Z",
-      "avatar": "ident/default_avatars/level-0-1.png",
-      "role": "user",
+      "created_at": "2015-08-04T00:21:34.623Z",
+      "updated_at": "2015-08-04T00:21:34.651Z",
       "user": {
-        "id": 2,
-        "email": "user2@example.com",
-        "created_at": "2015-08-04T00:21:34.924Z",
-        "updated_at": "2015-08-04T00:21:34.924Z"
+        "key": "AB1GB745-F76J-QU4W-BU04-357B1D2421920",
+        "worker_id": "CL_DCJ82JDFK",
         "survey_responses": []
       }
     }
@@ -104,8 +97,8 @@ include_profile_question_responses | false | Passing "true" for this value will 
 include_survey_responses | false | Passing "true" for this value will include survey response data for each membership.
 created_before | none | Returns only memberships created before the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 created_after | none | Returns only memberships created after the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
-update_before | none | Returns only memberships update before the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
-update_after | none | Returns only memberships update after the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
+updated_before | none | Returns only memberships update before the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
+updated_after | none | Returns only memberships update after the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 
 
 ### Attribute Descriptions
@@ -116,7 +109,7 @@ id | integer | The id of the membership
 site_id | integer | The id of the site that this membership belongs to
 site_name | string | The name of the site that this membership belongs to
 user_id | integer | The id of the user that this membership belongs to
-user.key | string | A unique key assigned to the user
+user.key | string | A unique key assigned to the user, used for added authentication/authorization
 user.worker_id | string | The user's worker ID
 
 ### Survey Response Attribute Descriptions
