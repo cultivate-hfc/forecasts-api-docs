@@ -11,11 +11,11 @@ Each prediction set should also contain information about the method used to gen
 
 Submissions should also contain a `metadata` field. This string should contain JSON-formatted information about how the forecast was generated and any associated parameters that were used to generate it.
 
-### Official vs. Experimental vs. Machine Method Designation
+### Method Type Designation
 
 The first time you submit a forecast for a method, you must designate the method type. Once this designation has been set (via the first forecast), it cannot be changed.
 
-To designate a method type, you should include a `method_type` value in the `external_predictor_attributes` of your request body. The request body example to the right shows an example of this. The options for this value are: `official`, `experimental`, and `machine`.
+To designate a method type, you should include a `method_type` value in the `external_predictor_attributes` of your request body. The request body example to the right shows an example of this. The options for this value are: `official_locked`, `official_unlocked`, `experimental`, and `machine`.
 
 > Request:
 
@@ -114,7 +114,7 @@ external_predictions_attributes | Yes | An array of external prediction objects 
 Parameter | Required? | Description
 --------- | --------- | -----------
 method_name | Yes | A string identifying the method you're using to generate this forecast. Can be any string.
-method_type | On initial forecast | A method type designation. Options include: `official`, `experimental`, and `machine`.
+method_type | On initial forecast | A method type designation. Options include: `official_locked`, `official_unlocked`, `experimental`, and `machine`.
 
 
 ### External Prediction Parameters
