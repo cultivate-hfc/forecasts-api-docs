@@ -14,7 +14,7 @@ includes:
 - consensus_history
 - external_prediction_sets
 - fundamental_activity_units
-- memberships_without_surveys
+- memberships
 - prediction_sets
 - questions
 - scores

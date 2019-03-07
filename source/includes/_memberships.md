@@ -48,6 +48,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
                 "question_content": "question-content-1",
                 "answer_content": "abcdef",
                 "survey_question_scoring_notes": "all answers get two points",
+                "survey_question_scoring_scale": "a=1, b=2, c=3",
                 "survey_question_correct_answer": "abcdef"
               },
               {
@@ -60,6 +61,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
                 "question_content": "question-content-2",
                 "answer_content": "this is my answer",
                 "survey_question_scoring_notes": "the correct answer is worth two points",
+                "survey_question_scoring_scale": "a=1, b=2, c=3",
                 "survey_question_correct_answer": "abc123"
               }
             }
@@ -134,4 +136,5 @@ survey_response_id | integer | The id of the survey response this survey questio
 question_content | string | The content of the survey question this survey question response belongs to
 answer_content | string | The answer content for this survey question response. Format varies based on the type of survey questions.
 survey_question_scoring_notes | string | scoring notes for the survey question this response belongs to
+survey_question_scoring_scale | string | the scoring scale for the survey question, if one exists
 survey_question_correct_answer | string | the correct answer for the survey question this response belongs to
