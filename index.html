@@ -581,7 +581,7 @@
 
 <p>The first time you submit a forecast for a method, you must designate the method type. Once this designation has been set (via the first forecast), it cannot be changed.</p>
 
-<p>To designate a method type, you should include a <code class="prettyprint">method_type</code> value in the <code class="prettyprint">external_predictor_attributes</code> of your request body. The request body example to the right shows an example of this. The options for this value are: <code class="prettyprint">official_locked</code>, <code class="prettyprint">official_unlocked</code>, <code class="prettyprint">experimental</code>, and <code class="prettyprint">machine</code>.</p>
+<p>To designate a method type, you should include a <code class="prettyprint">method_type</code> value in the <code class="prettyprint">external_predictor_attributes</code> of your request body. The request body example to the right shows an example of this. The options for this value are: <code class="prettyprint">official</code>, <code class="prettyprint">experimental</code>, and <code class="prettyprint">machine</code>.</p>
 
 <blockquote>
 <p>Request:</p>
@@ -591,7 +591,7 @@
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
     -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">external_prediction_set</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">question_id</span><span class="se">\"</span><span class="s2">:123,</span><span class="se">\"</span><span class="s2">metadata</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">foo</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">bar</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">count</span><span class="se">\"</span><span class="s2">: 2},
-,</span><span class="se">\"</span><span class="s2">external_predictor_attributes</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">method_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">red</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">external_predictions_attributes</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.65,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:431},{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.34,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:432}]}}"</span>
+,</span><span class="se">\"</span><span class="s2">external_predictor_attributes</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">method_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">red</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">method_type</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">experimental</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">external_predictions_attributes</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.65,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:431},{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.34,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:432}]}}"</span>
 </code></pre>
 <blockquote>
 <p>Request body example:</p>
@@ -705,7 +705,7 @@
 <tr>
 <td>method_type</td>
 <td>On initial forecast</td>
-<td>A method type designation. Options include: <code class="prettyprint">official_locked</code>, <code class="prettyprint">official_unlocked</code>, <code class="prettyprint">experimental</code>, and <code class="prettyprint">machine</code>.</td>
+<td>A method type designation. Options include: <code class="prettyprint">official</code>, <code class="prettyprint">experimental</code>, and <code class="prettyprint">machine</code>.</td>
 </tr>
 </tbody></table>
 
