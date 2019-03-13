@@ -15,7 +15,7 @@ Submissions should also contain a `metadata` field. This string should contain J
 
 The first time you submit a forecast for a method, you must designate the method type. Once this designation has been set (via the first forecast), it cannot be changed.
 
-To designate a method type, you should include a `method_type` value in the `external_predictor_attributes` of your request body. The request body example to the right shows an example of this. The options for this value are: `official_locked`, `official_unlocked`, `experimental`, and `machine`.
+To designate a method type, you should include a `method_type` value in the `external_predictor_attributes` of your request body. The request body example to the right shows an example of this. The options for this value are: `official`, `experimental`, and `machine`.
 
 > Request:
 
@@ -25,7 +25,7 @@ curl -X "POST" "https://yoursite.hfc-staging.com/api/v1/external_prediction_sets
   -H "Content-Type: application/json" \
   -H "Accept: application/json" \
 	-d "{\"external_prediction_set\":{\"question_id\":123,\"metadata\":{\"foo\": \"bar\", \"count\": 2},
-,\"external_predictor_attributes\":{\"method_name\":\"red\"},\"external_predictions_attributes\":[{\"value\":0.65,\"answer_id\":431},{\"value\":0.34,\"answer_id\":432}]}}"
+,\"external_predictor_attributes\":{\"method_name\":\"red\",\"method_type\":\"experimental\"},\"external_predictions_attributes\":[{\"value\":0.65,\"answer_id\":431},{\"value\":0.34,\"answer_id\":432}]}}"
 ```
 
 > Request body example:
@@ -114,7 +114,7 @@ external_predictions_attributes | Yes | An array of external prediction objects 
 Parameter | Required? | Description
 --------- | --------- | -----------
 method_name | Yes | A string identifying the method you're using to generate this forecast. Can be any string.
-method_type | On initial forecast | A method type designation. Options include: `official_locked`, `official_unlocked`, `experimental`, and `machine`.
+method_type | On initial forecast | A method type designation. Options include: `official`, `experimental`, and `machine`.
 
 
 ### External Prediction Parameters
