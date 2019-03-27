@@ -27,7 +27,13 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
       "user": {
         "key": "CEJGB744-F89M-UU4C-BC04-357B1D2421738",
         "worker_id": "CL_JKJ88IUFL",
-        "survey_responses": [
+        "demographic_info": {
+          "gender": "Male",
+          "education": "Bachelor's degree",
+          "birth_year": "1994"
+        }
+      },
+      "survey_responses": [
           {
             "id": 1,
             "user_id": 2,
@@ -66,8 +72,6 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
               }
             }
           ]
-        }
-      }
     },
     {
       "id": 2,
@@ -78,9 +82,9 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
       "updated_at": "2015-08-04T00:21:34.651Z",
       "user": {
         "key": "AB1GB745-F76J-QU4W-BU04-357B1D2421920",
-        "worker_id": "CL_DCJ82JDFK",
-        "survey_responses": []
-      }
+        "worker_id": "CL_DCJ82JDFK"
+      },
+      "survey_responses": []
     }
   ]
 }
@@ -113,6 +117,7 @@ site_name | string | The name of the site that this membership belongs to
 user_id | integer | The id of the user that this membership belongs to
 user.key | string | A unique key assigned to the user, used for added authentication/authorization
 user.worker_id | string | The user's worker ID
+user.demographic_info | hash | Birth year, gender, and education level of the user
 
 ### Survey Response Attribute Descriptions
 
