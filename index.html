@@ -998,7 +998,13 @@
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CEJGB744-F89M-UU4C-BC04-357B1D2421738"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"worker_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CL_JKJ88IUFL"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"survey_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"demographic_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Male"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"education"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bachelor's degree"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"birth_year"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1994"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"survey_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
           </span><span class="p">{</span><span class="w">
             </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="s2">"user_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -1037,8 +1043,6 @@
               </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -1049,9 +1053,9 @@
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:34.651Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AB1GB745-F76J-QU4W-BU04-357B1D2421920"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"worker_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CL_DCJ82JDFK"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"survey_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+        </span><span class="s2">"worker_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CL_DCJ82JDFK"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"survey_responses"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1144,6 +1148,11 @@
 <td>user.worker_id</td>
 <td>string</td>
 <td>The user&rsquo;s worker ID</td>
+</tr>
+<tr>
+<td>user.demographic_info</td>
+<td>hash</td>
+<td>Birth year, gender, and education level of the user</td>
 </tr>
 </tbody></table>
 
@@ -1642,16 +1651,6 @@
 <td>Pagination page number</td>
 </tr>
 <tr>
-<td>tags</td>
-<td>none</td>
-<td>A comma separated list of tags to filter by (e.g. &ldquo;sports,politics,tech&rdquo;)</td>
-</tr>
-<tr>
-<td>challenges</td>
-<td>none</td>
-<td>A comma separated list of challenge ids to filter by (e.g. &ldquo;1,5,8&rdquo;). Will return only questions in those challenges. Operates as a logical AND (ie. if you pass &ldquo;1,5&rdquo;, it will return only questions that are in both challenges)</td>
-</tr>
-<tr>
 <td>filter</td>
 <td>none</td>
 <td>A filter to apply to the question list. Possible values: <code class="prettyprint">starred</code>, <code class="prettyprint">featured</code>. By default, no filter is applied.</td>
@@ -1685,16 +1684,6 @@
 <td>updated_after</td>
 <td>none</td>
 <td>Returns only questions updated after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)</td>
-</tr>
-<tr>
-<td>include_tag_ids</td>
-<td>false</td>
-<td>Passing &ldquo;true&rdquo; for this value will include an array of tag ids for the question.</td>
-</tr>
-<tr>
-<td>include_challenge_ids</td>
-<td>false</td>
-<td>Passing &ldquo;true&rdquo; for this value will include an array of challenge ids for the question.</td>
 </tr>
 </tbody></table>
 
