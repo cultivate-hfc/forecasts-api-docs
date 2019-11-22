@@ -1178,7 +1178,7 @@
 <tr>
 <td>status</td>
 <td>string</td>
-<td>The completion status of this membership&rsquo;s training assignment. Can be &ldquo;started&rdquo; or &ldquo;completed&rdquo;</td>
+<td>The completion status of this user&rsquo;s survey response. Can be &ldquo;started&rdquo; or &ldquo;completed&rdquo;</td>
 </tr>
 <tr>
 <td>page_order</td>
@@ -1209,12 +1209,12 @@
 <tr>
 <td>survey_question_id</td>
 <td>integer</td>
-<td>The id of the survey question this survey question response belongs to</td>
+<td>The id of the survey question being responded to</td>
 </tr>
 <tr>
 <td>survey_answer_id</td>
 <td>integer</td>
-<td>The id of the survey answer this survey question response belongs to</td>
+<td>The id of the survey answer that the user selected</td>
 </tr>
 <tr>
 <td>survey_response_id</td>
@@ -1224,17 +1224,17 @@
 <tr>
 <td>question_content</td>
 <td>string</td>
-<td>The content of the survey question this survey question response belongs to</td>
+<td>The content/text of the survey question</td>
 </tr>
 <tr>
 <td>answer_content</td>
 <td>string</td>
-<td>The answer content for this survey question response. Format varies based on the type of survey questions.</td>
+<td>The selected/provided answer from the user. Format varies based on the type of survey questions.</td>
 </tr>
 <tr>
 <td>survey_question_scoring_notes</td>
 <td>string</td>
-<td>scoring notes for the survey question this response belongs to</td>
+<td>scoring notes for the survey question</td>
 </tr>
 <tr>
 <td>survey_question_scoring_scale</td>
@@ -1244,7 +1244,7 @@
 <tr>
 <td>survey_question_correct_answer</td>
 <td>string</td>
-<td>the correct answer for the survey question this response belongs to</td>
+<td>the correct answer for the survey question</td>
 </tr>
 </tbody></table>
 
