@@ -125,7 +125,7 @@ Parameter | Type | Description
 id | integer | The id of the survey response
 user_id | integer | The id of the user that this survey response belongs to
 survey_id | integer | The id of the survey that this survey response belongs to
-status | string | The completion status of this membership's training assignment. Can be "started" or "completed"
+status | string | The completion status of this user's survey response. Can be "started" or "completed"
 page_order | array | A list showing the order in which survey pages are shown the user, based on  survey page ids
 survey_name | string | The name of the survey that this response belongs to
 
@@ -134,11 +134,11 @@ survey_name | string | The name of the survey that this response belongs to
 Parameter | Type | Description
 --------- | ------- | -----------
 id | integer | The id of the survey question response
-survey_question_id | integer | The id of the survey question this survey question response belongs to
-survey_answer_id | integer | The id of the survey answer this survey question response belongs to
+survey_question_id | integer | The id of the survey question being responded to
+survey_answer_id | integer | The id of the survey answer that the user selected
 survey_response_id | integer | The id of the survey response this survey question response belongs to
-question_content | string | The content of the survey question this survey question response belongs to
-answer_content | string | The answer content for this survey question response. Format varies based on the type of survey questions.
-survey_question_scoring_notes | string | scoring notes for the survey question this response belongs to
+question_content | string | The content/text of the survey question
+answer_content | string | The selected/provided answer from the user. Format varies based on the type of survey questions.
+survey_question_scoring_notes | string | scoring notes for the survey question
 survey_question_scoring_scale | string | the scoring scale for the survey question, if one exists
-survey_question_correct_answer | string | the correct answer for the survey question this response belongs to
+survey_question_correct_answer | string | the correct answer for the survey question
