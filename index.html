@@ -1079,11 +1079,6 @@
 <td>Pagination page number</td>
 </tr>
 <tr>
-<td>include_profile_question_responses</td>
-<td>false</td>
-<td>Passing &ldquo;true&rdquo; for this value will include profile questions and responses for each membership.</td>
-</tr>
-<tr>
 <td>include_survey_responses</td>
 <td>false</td>
 <td>Passing &ldquo;true&rdquo; for this value will include survey response data for each membership.</td>
@@ -1276,6 +1271,7 @@
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
       </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
       </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"discover_question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:40.730Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:40.730Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"comment_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
@@ -1285,6 +1281,7 @@
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">456</span><span class="p">,</span><span class="w">
           </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
           </span><span class="s2">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1301,6 +1298,7 @@
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">457</span><span class="p">,</span><span class="w">
           </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
           </span><span class="s2">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1317,6 +1315,7 @@
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">66</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"discover_answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">458</span><span class="p">,</span><span class="w">
           </span><span class="s2">"membership_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
           </span><span class="s2">"paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -1525,6 +1524,7 @@
           </span><span class="s2">"refunded_by_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"resolved_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-15T00:21:35.906Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"resolved_by_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"correctness_known_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-15T00:21:35.906Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:35.918Z"</span><span class="w">
@@ -1545,6 +1545,7 @@
           </span><span class="s2">"refunded_by_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"resolved_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-15T00:21:35.906Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"resolved_by_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
           </span><span class="s2">"correctness_known_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-15T00:21:35.906Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:35.927Z"</span><span class="w">
@@ -1565,6 +1566,7 @@
           </span><span class="s2">"refunded_by_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"resolved_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-15T00:21:35.906Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"resolved_by_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
           </span><span class="s2">"correctness_known_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-09-15T00:21:35.906Z"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:35.933Z"</span><span class="w">
@@ -1623,6 +1625,7 @@
           </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
           </span><span class="s2">"resolved_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"resolved_by_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sort_order"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
           </span><span class="s2">"correctness_known_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Forecast::Binary::Answer"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-08-04T00:21:35.965Z"</span><span class="w">
@@ -1663,7 +1666,7 @@
 <tr>
 <td>sort</td>
 <td>published_at</td>
-<td>Sort order for the questions. Possible values: <code class="prettyprint">published_at</code>, <code class="prettyprint">ends_at</code>, <code class="prettyprint">resolved_at</code>, <code class="prettyprint">prediction_sets_count</code></td>
+<td>Order in which the questions should be returned. Possible values: <code class="prettyprint">published_at</code>, <code class="prettyprint">ends_at</code>, <code class="prettyprint">resolved_at</code>, <code class="prettyprint">prediction_sets_count</code></td>
 </tr>
 <tr>
 <td>created_before</td>
@@ -1709,7 +1712,7 @@
 <tr>
 <td>name</td>
 <td>string</td>
-<td>The question content</td>
+<td>The question content/text</td>
 </tr>
 <tr>
 <td>type</td>
@@ -1911,6 +1914,11 @@
 <td>type</td>
 <td>string</td>
 <td>The internal answer type (e.g. prediction market stock, opinion pool answer)</td>
+</tr>
+<tr>
+<td>sort_order</td>
+<td>integer</td>
+<td>The answer order used for ordinal scoring</td>
 </tr>
 </tbody></table>
 
