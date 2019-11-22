@@ -99,7 +99,6 @@ curl "https://yoursite.hfc-staging.com/api/v1/memberships" \
 Parameter | Default | Description
 --------- | ------- | -----------
 page | 0 | Pagination page number
-include_profile_question_responses | false | Passing "true" for this value will include profile questions and responses for each membership.
 include_survey_responses | false | Passing "true" for this value will include survey response data for each membership.
 created_before | none | Returns only memberships created before the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 created_after | none | Returns only memberships created after the passed time. Time should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)

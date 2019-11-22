@@ -65,6 +65,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
           "refunded_by_id": null,
           "resolved_at": "2015-09-15T00:21:35.906Z",
           "resolved_by_id": 12,
+          "sort_order": 0,
           "correctness_known_at": "2015-09-15T00:21:35.906Z",
           "type": null,
           "updated_at": "2015-08-04T00:21:35.918Z"
@@ -85,6 +86,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
           "refunded_by_id": null,
           "resolved_at": "2015-09-15T00:21:35.906Z",
           "resolved_by_id": 12,
+          "sort_order": 1,
           "correctness_known_at": "2015-09-15T00:21:35.906Z",
           "type": null,
           "updated_at": "2015-08-04T00:21:35.927Z"
@@ -105,6 +107,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
           "refunded_by_id": null,
           "resolved_at": "2015-09-15T00:21:35.906Z",
           "resolved_by_id": 12,
+          "sort_order": 2,
           "correctness_known_at": "2015-09-15T00:21:35.906Z",
           "type": null,
           "updated_at": "2015-08-04T00:21:35.933Z"
@@ -163,6 +166,7 @@ curl "https://yoursite.hfc-staging.com/api/v1/questions" \
           "question_id": 6,
           "resolved_at": null,
           "resolved_by_id": null,
+          "sort_order": 0,
           "correctness_known_at": null,
           "type": "Forecast::Binary::Answer",
           "updated_at": "2015-08-04T00:21:35.965Z"
@@ -184,7 +188,7 @@ Parameter | Default | Description
 page | 0 | Pagination page number
 filter | none | A filter to apply to the question list. Possible values: `starred`, `featured`. By default, no filter is applied.
 status | active | A question status filter to apply to the question list. Possible values: `closed`, `all`. If this value is omitted, only active questions are returned. To include all questions, you should pass `all` for this value.
-sort | published_at | Sort order for the questions. Possible values: `published_at`, `ends_at`, `resolved_at`, `prediction_sets_count`
+sort | published_at | Order in which the questions should be returned. Possible values: `published_at`, `ends_at`, `resolved_at`, `prediction_sets_count`
 created_before | none | Returns only questions created before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 created_after | none | Returns only questions created after the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
 updated_before | none | Returns only questions updated before the passed date. Date should be in iso8601 format (e.g. 2015-08-23T15:43:11-05:00)
@@ -196,7 +200,7 @@ Parameter | Type | Description
 --------- | ------- | -----------
 id | integer | The id of the question
 discover_question_id | integer | The id of the discover question used to generate/publish this question, if collaborative question generation (Discover) is being used
-name | string | The question content
+name | string | The question content/text
 type | string | The internal question type (e.g. prediction market, binary prediction market, opinion pool)
 site_id | integer | The id of the site that this question belongs to
 membership_id | integer | The id of the membership who created this question
@@ -240,3 +244,4 @@ resolved_at | datetime | The date & time that this answer was resolved
 resolved_by_id | integer | The memebership_id of the membership who resolved this answer
 correctness_known_at | datetime | The date & time that the correctness of this answer was known. If an administrator sets this value when resolving the answer, all forecasts made after it will be invalidated.
 type | string | The internal answer type (e.g. prediction market stock, opinion pool answer)
+sort_order | integer | The answer order used for ordinal scoring
