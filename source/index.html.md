@@ -13,6 +13,7 @@ includes:
 - clarifications
 - consensus_history
 - external_prediction_sets
+- bulk_external_prediction_sets
 - fundamental_activity_units
 - memberships
 - prediction_sets
