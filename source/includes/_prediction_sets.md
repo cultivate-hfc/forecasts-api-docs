@@ -112,9 +112,11 @@ Parameter | Type | Description
 id | integer | The id of the prediction set
 membership_id | integer | The id of the membership that submitted the prediction set
 question_id | integer | The id of the question that this prediction set belongs to
+discover_question_id | integer | The discover question id that this record pertains to
 rationale | string | The text of the rationale (if any) that the user submitted with the forecast
 predictions.id | integer | The id of the prediction
 predictions.answer_id | integer | The id of the answer this prediction belongs to
+predictions.discover_answer_id | integer | The discover answer id that this record pertains to
 predictions.membership_id | integer | The id of the membership that submitted the prediction
 predictions.filled_at | date | The timestamp of when the prediction was processed. This timestamp is used for scoring
 predictions.made_after_correctness_known | boolean | Whether or not the prediction was submitted after the "correctness" of the answer was already known
