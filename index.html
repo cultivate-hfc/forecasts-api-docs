@@ -832,6 +832,112 @@
 </tr>
 </tbody></table>
 
+          <h2 id="bulk-external-prediction-sets-creation">Bulk External Prediction Sets Creation</h2>
+
+<p>In addition to the <a href="/#external-prediction-sets-creation">External Prediction Set Creation API</a>, where you create a single External Prediction Set per request, we also provide a bulk External Prediction Set creation endpoint. This allows you to submit forecasts for many/all active questions for a forecasting method (aka. an External Predictor) in a single request. Each request can only contain forecasts for a single forecasting method. If you need to submit forecasts for 100 forecasting methods, you will need to make 100 requests &ndash; one request per forecasting method.</p>
+
+<p><strong>Note: all requirements regarding the structure of <code class="prettyprint">external_predictions_attributes</code> and definition of <code class="prettyprint">external_predictor_attributes</code> still apply to this endpoint.</strong></p>
+
+<p>Given that multiple External Prediction Sets are being created at once, it&rsquo;s possible that some submissions will be successfully saved, while others will be rejected for reasons such as invalid inputs. The response from this endpoint will do two things to notify you of the success or failure of your submission:</p>
+
+<p>First, the HTTP response code will be one of three values: </p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>HTTP Response Code</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>OK</td>
+<td>200</td>
+<td>All External Prediction Sets in the request were successfully saved</td>
+</tr>
+<tr>
+<td>Multi-Status</td>
+<td>207</td>
+<td>Some External Prediction Sets in the request were successfully saved, some failed</td>
+</tr>
+<tr>
+<td>Unprocessible Entity</td>
+<td>422</td>
+<td>All External Prediction Sets in the request failed to save</td>
+</tr>
+</tbody></table>
+
+<p>Second, the response body will contain a JSON array, where each record in the array corresponds to a single forecast in your request. Successfully saved forecasts will contain the question ID and the ID of the External Prediction Set that was created for it. Forecasts that fail to save will include the question ID and an array of error messages. A <code class="prettyprint">Multi-Status</code> response for a submission that includes 2 successful forecasts and 1 rejected forecast might look something like the example to the right.</p>
+
+<blockquote>
+<p>Multi-Status Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="mi">403</span><span class="p">,</span><span class="s2">"question_id"</span><span class="p">:</span><span class="mi">702</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"question_id"</span><span class="p">:</span><span class="mi">703</span><span class="p">,</span><span class="s2">"errors"</span><span class="p">:[</span><span class="s2">"Predictions must add up to 100%"</span><span class="p">]},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="mi">404</span><span class="p">,</span><span class="s2">"question_id"</span><span class="p">:</span><span class="mi">704</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request:</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X <span class="s2">"POST"</span> <span class="s2">"https://yoursite.hfc-staging.com/api/v1/bulk_external_prediction_sets"</span> <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer b95b4f848cd226e55b7a42f6a8e8669350730270f5a91d64b6c70328b0156d75"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+    -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">external_predictor_attributes</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">method_name</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">red</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">method_type</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">official</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">external_prediction_sets</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">question_id</span><span class="se">\"</span><span class="s2">:180,</span><span class="se">\"</span><span class="s2">metadata</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">a</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">bcd</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">e</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">horse</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">external_predictions_attributes</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.5,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:540},{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.3,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:541},{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.2,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:542}]},{</span><span class="se">\"</span><span class="s2">question_id</span><span class="se">\"</span><span class="s2">:181,</span><span class="se">\"</span><span class="s2">metadata</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">a</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">bcd</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">e</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">cow</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">external_predictions_attributes</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.6544,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:543},{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.34,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:544},{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.0056,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:545},{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">0.0</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:546},{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.0,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:547}]},{</span><span class="se">\"</span><span class="s2">question_id</span><span class="se">\"</span><span class="s2">:182,</span><span class="se">\"</span><span class="s2">metadata</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">a</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">bcd</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">e</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">duck</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">external_predictions_attributes</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">value</span><span class="se">\"</span><span class="s2">:0.678912,</span><span class="se">\"</span><span class="s2">answer_id</span><span class="se">\"</span><span class="s2">:548}]}]}"</span>
+</code></pre>
+<blockquote>
+<p>Request body example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"external_predictor_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"method_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"red"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"method_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"official"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"external_prediction_sets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bcd"</span><span class="p">,</span><span class="w"> </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"horse"</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"external_predictions_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">540</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"> </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">541</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">542</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">181</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bcd"</span><span class="p">,</span><span class="w"> </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cow"</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"external_predictions_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6544</span><span class="p">,</span><span class="w"> </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">543</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.34</span><span class="p">,</span><span class="w"> </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">544</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0056</span><span class="p">,</span><span class="w"> </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">545</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0"</span><span class="p">,</span><span class="w"> </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">546</span><span class="w"> </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">547</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"question_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">182</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"a"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bcd"</span><span class="p">,</span><span class="w"> </span><span class="s2">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"duck"</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"external_predictions_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w"> </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.678912</span><span class="p">,</span><span class="w"> </span><span class="s2">"answer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">548</span><span class="w"> </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="mi">56</span><span class="p">,</span><span class="s2">"question_id"</span><span class="p">:</span><span class="mi">219</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="mi">57</span><span class="p">,</span><span class="s2">"question_id"</span><span class="p">:</span><span class="mi">220</span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="s2">"id"</span><span class="p">:</span><span class="mi">58</span><span class="p">,</span><span class="s2">"question_id"</span><span class="p">:</span><span class="mi">221</span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://yoursite.hfc-staging.com/api/v1/bulk_external_prediction_sets</code></p>
+
           <h1 id="fundamental-activity-units">Fundamental Activity Units</h1>
 
 <h2 id="fundamental-activity-unit-creation">Fundamental Activity Unit Creation</h2>
